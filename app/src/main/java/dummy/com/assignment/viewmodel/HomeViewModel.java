@@ -9,11 +9,14 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import java.util.Collections;
+
 import dummy.com.assignment.BR;
 import dummy.com.assignment.R;
 import dummy.com.assignment.helper.HomeRequestHelper;
 import dummy.com.assignment.interactionHandlers.ImageClickHandler;
 import dummy.com.assignment.model.ResponseData;
+import dummy.com.assignment.mypicasso.PhotoManager;
 import dummy.com.assignment.ui.ImageAdapter;
 
 public class HomeViewModel extends BaseObservable {
@@ -62,6 +65,10 @@ public class HomeViewModel extends BaseObservable {
     public void onSearchClicked() {
         if (responseData == null || !responseData.hasPhotoList() || hasSearchTextChanged()) {
             // hit for new page show progress
+            if(imageAdapter!=null) {
+                imageAdapter.clearData();
+            }
+            PhotoManager.cancelAll();
             setProgressbarVisibility(true);
             getDataForAPI(searchText.get());
         } else {

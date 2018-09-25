@@ -27,6 +27,11 @@ public class ImageAdapter extends BaseBindingRecyclerAdapter<ItemData, ImageClic
         notifyDataSetChanged();
     }
 
+    public void clearData(){
+        this.itemDataList.clear();
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getLayoutIdForViewType(int viewType) {
         return R.layout.galleryitem;

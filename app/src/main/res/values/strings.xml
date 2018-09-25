@@ -4,5 +4,5 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="error_msg">No Images Found</string>
-    <string name="error_msg_next">No Images Found</string>
+    <string name="error_msg_next">No New Image</string>
 </resources>
