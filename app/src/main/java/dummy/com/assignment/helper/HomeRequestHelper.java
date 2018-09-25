@@ -36,11 +36,11 @@ public class HomeRequestHelper {
         disposable.add(NetworkUtils.makeGetRequest(String.format(Locale.ENGLISH, url, searchText, pageRequestInProcess), ResponseData.class).
                 subscribeOn(Schedulers.from(AsyncTask.THREAD_POOL_EXECUTOR)).
                 observeOn(AndroidSchedulers.mainThread()).map((ResponseData responseData)
-                -> processData(presentData, responseData)).subscribe(this::onSuccess, this::onError));
+                -> processData(searchText,presentData, responseData)).subscribe(this::onSuccess, this::onError));
     }
 
 
-    private ResponseData processData(ResponseData presentData, ResponseData responseData) throws IOException {
+    private ResponseData processData(String searchText,ResponseData presentData, ResponseData responseData) throws IOException {
         if (presentData == null) {
             presentData = getResponseDataObject();
         }
@@ -51,6 +51,7 @@ public class HomeRequestHelper {
             photosModel.getDataList().addAll(responseData.getPhotos().getDataList());
             photosModel.setPages(responseData.getPhotos().getPages());
             photosModel.setTotal(responseData.getPhotos().getTotal());
+            photosModel.setCurrentString(searchText);
             resetRequestInProcess();
             return presentData;
         } else {

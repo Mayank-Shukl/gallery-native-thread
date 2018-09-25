@@ -27,7 +27,7 @@
             android:id="@+id/search"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:background="@android:drawable/list_selector_background"
+            android:background="?android:attr/selectableItemBackground"
             android:scaleType="centerInside"
             android:onClick="@{()->viewModel.onSearchClicked()}"
             android:src="@android:drawable/ic_menu_search"
@@ -50,11 +50,12 @@
             android:id="@+id/progress"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="#ffffff"
             app:visibleGone="@{viewModel.progressbarVisibility}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/search">
 
             <ProgressBar
                 android:layout_width="wrap_content"
