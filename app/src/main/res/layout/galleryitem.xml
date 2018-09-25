@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="itemData"
+            type="dummy.com.assignment.model.ItemData" />
+
+        <variable
+            name="handler"
+            type="dummy.com.assignment.interactionHandlers.ImageClickHandler" />
+    </data>
+
+
+    <dummy.com.assignment.mypicasso.PhotoView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:scaleType="centerCrop"
+        android:background="@color/colorPrimary"
+        bind:imageUrl="@{itemData.url}"
+         />
+
+</layout>
